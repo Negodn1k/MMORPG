@@ -1,12 +1,9 @@
 package com.game.game;
 
-public class Wizard implements Character{
-    private String name;
+public class Hunter implements Character{
+    String name;
 
-    public Wizard(String name) {
-        this.name = name;
-    }
-
+    @Override
     public String getName() {
         return name;
     }

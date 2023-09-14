@@ -9,8 +9,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class LogInController {
     @FXML
     private TextField loginField;
@@ -23,15 +21,15 @@ public class LogInController {
 
     @FXML
     Button loginButton;
-
+    static Account account;
     @FXML
     protected void onLoginButtonClick() {
         try {
-            Account account = new Account(loginField.getText(), passwordField.getText());
+            account = new Account(loginField.getText(), passwordField.getText());
             if (!account.accountValidation()) {
                 invalidData.setText("Неверный логин или пароль");
             } else {
-                openMainWindow();
+                openCharacterWindow();
                 Stage stage = (Stage) loginButton.getScene().getWindow();
                 stage.close();
             }
@@ -41,7 +39,7 @@ public class LogInController {
         }
     }
 
-    private void openMainWindow() {
+    private void openCharacterWindow() {
         try {
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(LogInController.class.getResource("choose-character-page.fxml"));
